@@ -5,7 +5,7 @@
   "idf.openOcdConfigs": [
     "board/esp32s3-builtin.cfg"
   ],
-  "idf.portWin": "detect",
+  "idf.portWin": "COM7",
   "idf.toolsPathWin": "f:\\esp\\.espressif",
   "idf.customExtraVars": {
     "IDF_TARGET": "esp32s3"
@@ -15,5 +15,6 @@
     "--background-index",
     "--query-driver=**",
     "--compile-commands-dir=f:\\StudentGame\\2025National College Mechanical Innovation Competition\\Software\\2025NUMIC_Code\\Buttterfly\\build"
-  ]
+  ],
+  "idf.flashType": "UART"
 }
