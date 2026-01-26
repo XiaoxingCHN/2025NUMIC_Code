@@ -16,5 +16,5 @@
     "--query-driver=**",
     "--compile-commands-dir=f:\\StudentGame\\2025National College Mechanical Innovation Competition\\Software\\2025NUMIC_Code\\Buttterfly\\build"
   ],
-  "idf.flashType": "UART"
+  "idf.flashType": "JTAG"
 }
