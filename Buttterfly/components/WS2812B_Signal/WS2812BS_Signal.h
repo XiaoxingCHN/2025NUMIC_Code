@@ -1,5 +1,6 @@
 #ifndef __WS2812BS_SIGNAL_H__
 #define __WS2812BS_SIGNAL_H__
+
 #include "led_strip.h"
 //使用RMT驱动WS2812B,不占用额外的SPI资源
 
