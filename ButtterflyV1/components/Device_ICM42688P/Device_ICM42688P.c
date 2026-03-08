@@ -131,13 +131,16 @@ void Dev_ICM42688P_Init()
     Dev_ICM42688P_WriteByte(ICM42688_PWR_MGMT0, 0x0F);
     vTaskDelay(pdMS_TO_TICKS(10));
 
-    // 陀螺仪配置：ODR=1kHz，±2000dps（0x06 -> FS=2000dps, ODR=1kHz）
+    // 陀螺仪配置：根据数据手册，0x06 => ODR=200Hz，FS=±2000dps（FS_SEL=0）
     Dev_ICM42688P_WriteByte(ICM42688_GYRO_CONFIG0, 0x06);
 
-    // 加速度配置：ODR=1kHz，±16g（0x06 -> FS=16g, ODR=1kHz）
+    // 加速度配置：根据数据手册，0x06 => ODR=200Hz，FS=±16g（FS_SEL=3）
     Dev_ICM42688P_WriteByte(ICM42688_ACCEL_CONFIG0, 0x06);
-    uint8_t filter_config = 0x9A;
-    Dev_ICM42688P_WriteByte(0x08, filter_config);// 设置低通滤波器配置
+
+    // 根据数据手册，滤波配置寄存器位于 GYRO_CONFIG1/ACCEL_CONFIG1（Bank0）
+    // 这里设置三阶 UI 低通滤波，约 20Hz 带宽（UI_FILT_ORD=3，UI_FILT_BW=6），针对 200Hz ODR
+    Dev_ICM42688P_WriteByte(ICM42688_GYRO_CONFIG1, 0xD6);
+    Dev_ICM42688P_WriteByte(ICM42688_ACCEL_CONFIG1, 0xD6);
 
 }
 

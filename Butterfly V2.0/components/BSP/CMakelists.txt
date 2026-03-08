@@ -1,0 +1,9 @@
+idf_components_register_component(
+    SRCS
+        "BSP_spi.c"
+    INCLUDE_DIRS
+        "."
+    REQUIRED
+        esp_driver_spi
+        esp_driver_gpio
+)

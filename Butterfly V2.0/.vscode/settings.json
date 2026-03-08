@@ -1,12 +1,10 @@
 {
   "C_Cpp.intelliSenseEngine": "default",
-  "idf.espIdfPathWin": "f:\\esp\\v5.5\\esp-idf",
-  "idf.pythonInstallPath": "f:\\esp\\.espressif\\tools\\idf-python\\3.11.2\\python.exe",
   "idf.openOcdConfigs": [
     "board/esp32s3-builtin.cfg"
   ],
   "idf.portWin": "COM7",
-  "idf.toolsPathWin": "f:\\esp\\.espressif",
+  "idf.currentSetup": "f:\\esp\\v5.5\\esp-idf",
   "idf.customExtraVars": {
     "IDF_TARGET": "esp32s3"
   },
@@ -14,7 +12,6 @@
   "clangd.arguments": [
     "--background-index",
     "--query-driver=**",
-    "--compile-commands-dir=f:\\StudentGame\\2025National College Mechanical Innovation Competition\\Software\\2025NUMIC_Code\\Buttterfly\\build"
-  ],
-  "idf.flashType": "JTAG"
+    "--compile-commands-dir=f:\\StudentGame\\2025National College Mechanical Innovation Competition\\Software\\2025NUMIC_Code\\Butterfly V2.0\\build"
+  ]
 }

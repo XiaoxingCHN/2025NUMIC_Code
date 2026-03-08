@@ -42,6 +42,8 @@
 #define ICM42688_PWR_MGMT0              0x4E    /* 电源管理，开关陀螺/加速度计 */
 #define ICM42688_GYRO_CONFIG0           0x4F    /* 陀螺仪 ODR/量程 */
 #define ICM42688_ACCEL_CONFIG0          0x50    /* 加速度计 ODR/量程 */
+#define ICM42688_GYRO_CONFIG1           0x51    /* 陀螺仪 UI 滤波配置（带宽/阶数） */
+#define ICM42688_ACCEL_CONFIG1          0x53    /* 加速度计 UI 滤波配置（带宽/阶数） */
 
 /* 数据寄存器（Bank0） */
 #define ICM42688_TEMP_DATA1             0x1D

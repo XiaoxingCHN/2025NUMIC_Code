@@ -13,7 +13,7 @@ void configure_led(void)
     // LED 灯带通用配置
     led_strip_config_t strip_config = {
         .strip_gpio_num = BLINK_GPIO,                                // 设置 GPIO 引脚
-        .max_leds = 1,                                               // 设置 LED 数量
+        .max_leds = 262,                                               // 设置 LED 数量
         .color_component_format = LED_STRIP_COLOR_COMPONENT_FMT_RGB, // 设置颜色格式
     };
 
@@ -36,7 +36,7 @@ void configure_led(void)
  * @author XMX
  * **/
 void WS2812_Color_Set(uint8_t red, uint8_t green, uint8_t blue)
-{
-    led_strip_set_pixel(led_strip, 0, red, green, blue);//设置WS2812B的颜色
+{   for(int i = 0; i < 280; i++)   
+    led_strip_set_pixel(led_strip, i, red, green, blue);//设置WS2812B的颜色
     led_strip_refresh(led_strip); // 刷新灯带使颜色生效
 }

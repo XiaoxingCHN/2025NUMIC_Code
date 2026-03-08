@@ -4,7 +4,7 @@
 #include "led_strip.h"
 //使用RMT驱动WS2812B,不占用额外的SPI资源
 
-#define BLINK_GPIO 21 // LED 连接的 GPIO 引脚
+#define BLINK_GPIO 6 // LED 连接的 GPIO 引脚
 
 extern led_strip_handle_t led_strip; //WS2812B的控制句柄
 

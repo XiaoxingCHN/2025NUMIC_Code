@@ -1,0 +1,8 @@
+idf_components_register_component(
+    SRCS
+        "Device_WS2812B.c"
+    INCLUDE_DIRS
+        "."
+    REQUIRED
+        led_strip
+)
