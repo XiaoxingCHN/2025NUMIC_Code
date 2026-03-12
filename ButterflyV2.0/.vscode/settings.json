@@ -1,11 +1,5 @@
 {
   "C_Cpp.intelliSenseEngine": "default",
-  "idf.port": "/dev/ttyACM0",
   "idf.flashType": "JTAG",
-  "idf.openOcdConfigs": [
-    "interface/esp_usb_jtag.cfg",
-    "target/esp32s3.cfg"
-  ],
-  "idf.currentSetup": "f:\\esp\\v5.5\\esp-idf",
   "idf.portWin": "COM7"
 }
