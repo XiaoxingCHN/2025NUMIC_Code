@@ -180,87 +180,43 @@ static void mahony_seed_from_acc(MahonyFilter *f, float ax, float ay, float az) 
 void app_main(void)
 {
 
-    configure_led(); // 配置 LED
-    // Dev_ICM42688P_Init(); // 初始化ICM42688P传感器
-    // ICM42688P_Data_Def dataZero={0};
-    // Dev_ICM42688P_ZeroCalibrate(&dataZero);
-    // ICM42688P_Data_Def sensor_data;
-    // //Begin1
-    // MahonyFilter mahony;
-    // mahony_init(&mahony, 2.0f, 0.0f); // Kp=2, Ki=0
-
-    // int64_t last_ts_us = esp_timer_get_time();
-    // bool mahony_seeded = false;
-
-    // Quat q_smooth = {1.0f, 0.0f, 0.0f, 0.0f};
-    // bool q_smooth_ready = false;
-
-    // // 初始 100 次输出的平均角作为零基准
-    // int calib_count = 0;
-    // bool calib_done = false;
-    // float sum_roll = 0.0f, sum_pitch = 0.0f, sum_yaw = 0.0f;
-    // float off_roll = 0.0f, off_pitch = 0.0f, off_yaw = 0.0f;
-    //     //End1
-     WS2812_Color_Set(47, 0, 167);
+    configure_WS2812B();
     while (1)
     {
+        // 红 -> 黄
+        for (int g = 0; g <= 255; g += 5) {
+            WS2812B_Color_Set(255, g, 0);
+            vTaskDelay(pdMS_TO_TICKS(20));
+        }
 
-     
-    //     Dev_ICM42688P_GetData(&sensor_data); // 获取传感器数据
-    //     // GetData 已经扣除了零偏，直接打印
-    //      // 计算 dt（秒）
-    //      int64_t now_us = esp_timer_get_time();
-    //      float dt = (now_us - last_ts_us) / 1e6f;
-    //      last_ts_us = now_us;
-    //      if (dt <= 0.0f || dt > 0.1f) dt = 0.01f; // 防守型限制
+        // 黄 -> 绿
+        for (int r = 255; r >= 0; r -= 5) {
+            WS2812B_Color_Set(r, 255, 0);
+            vTaskDelay(pdMS_TO_TICKS(20));
+        }
 
-    //      if (!mahony_seeded) {
-    //          mahony_seed_from_acc(&mahony, sensor_data.Acc.ax, sensor_data.Acc.ay, sensor_data.Acc.az);
-    //          mahony_seeded = true;
-    //      }
+        // 绿 -> 青
+        for (int b = 0; b <= 255; b += 5) {
+            WS2812B_Color_Set(0, 255, b);
+            vTaskDelay(pdMS_TO_TICKS(20));
+        }
 
-    //      // Mahony 姿态解算（输入角速度 rad/s 与加速度 m/s^2）
-    //      mahony_update(&mahony, sensor_data.Gyr.gx, sensor_data.Gyr.gy, sensor_data.Gyr.gz,
-    //              sensor_data.Acc.ax, sensor_data.Acc.ay, sensor_data.Acc.az, dt);
-    //      Quat q_raw = {mahony.q0, mahony.q1, mahony.q2, mahony.q3};
-    //      quat_normalize(&q_raw);
-    //      if (!q_smooth_ready) {
-    //          q_smooth = q_raw;
-    //          q_smooth_ready = true;
-    //      } else {
-    //          q_smooth = quat_slerp(q_smooth, q_raw, 0.15f);
-    //      }
+        // 青 -> 蓝
+        for (int g = 255; g >= 0; g -= 5) {
+            WS2812B_Color_Set(0, g, 255);
+            vTaskDelay(pdMS_TO_TICKS(20));
+        }
 
-    //      float roll_rad = 0.0f, pitch_rad = 0.0f, yaw_rad = 0.0f;
-    //      quat_to_euler(&q_smooth, &roll_rad, &pitch_rad, &yaw_rad);
+        // 蓝 -> 紫
+        for (int r = 0; r <= 255; r += 5) {
+            WS2812B_Color_Set(r, 0, 255);
+            vTaskDelay(pdMS_TO_TICKS(20));
+        }
 
-    //      // 前 100 次输出求平均作为零偏基准（仍在弧度域完成）
-    //      if (!calib_done) {
-    //          sum_roll  += roll_rad;
-    //          sum_pitch += pitch_rad;
-    //          sum_yaw   += yaw_rad;
-    //          calib_count++;
-    //          if (calib_count >= 100) {
-    //              off_roll  = sum_roll / (float)calib_count;
-    //              off_pitch = sum_pitch / (float)calib_count;
-    //              off_yaw   = sum_yaw / (float)calib_count;
-    //              calib_done = true;
-    //          }
-    //      }
-
-    //      float roll_out  = rad_to_deg180(roll_rad  - off_roll);
-    //      float pitch_out = rad_to_deg180(pitch_rad - off_pitch);
-    //      float yaw_out   = rad_to_deg180(yaw_rad   - off_yaw);
-    //      printf("%.2f,%.2f,%.2f\r\n", roll_out, pitch_out, yaw_out);
-    //     // ESP_LOGI(TAG, "Gyro: gx=%.2f dps, gy=%.2f dps, gz=%.2f dps", sensor_data.Gyr.gx, sensor_data.Gyr.gy, sensor_data.Gyr.gz);
-    //     // ESP_LOGI(TAG, "Set LED color to RED");
-    //    // vTaskDelay(pdMS_TO_TICKS(10)); // 延时 1 秒
-    //     // WS2812_Color_Set(255, 0, 255);              
-    //     // vTaskDelay(pdMS_TO_TICKS(500));           // 延时 500 毫秒
-   
-    //     vTaskDelay(pdMS_TO_TICKS(20));           // 延时 500
-    //     //Begin2
-    //     //End2
-     }
-
+        // 紫 -> 红
+        for (int b = 255; b >= 0; b -= 5) {
+            WS2812B_Color_Set(255, 0, b);
+            vTaskDelay(pdMS_TO_TICKS(20));
+        }
+    }
 }

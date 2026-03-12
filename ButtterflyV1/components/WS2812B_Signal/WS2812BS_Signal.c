@@ -6,14 +6,14 @@ led_strip_handle_t led_strip; // WS2812B的控制句柄
  * @brief 配置 WS2812B LED 灯带
  * @author XMX
  * **/
-void configure_led(void)
+void configure_WS2812B(void)
 {
    // ESP_LOGI(TAG, "Configuring addressable LED on GPIO %d", BLINK_GPIO);
 
     // LED 灯带通用配置
     led_strip_config_t strip_config = {
         .strip_gpio_num = BLINK_GPIO,                                // 设置 GPIO 引脚
-        .max_leds = 262,                                               // 设置 LED 数量
+        .max_leds = 290,                                               // 设置 LED 数量
         .color_component_format = LED_STRIP_COLOR_COMPONENT_FMT_RGB, // 设置颜色格式
     };
 
@@ -35,8 +35,8 @@ void configure_led(void)
  * @param blue 蓝色分量 (0-255)
  * @author XMX
  * **/
-void WS2812_Color_Set(uint8_t red, uint8_t green, uint8_t blue)
-{   for(int i = 0; i < 280; i++)   
+void WS2812B_Color_Set(uint8_t red, uint8_t green, uint8_t blue)
+{   for(int i = 0; i < 290; i++)   
     led_strip_set_pixel(led_strip, i, red, green, blue);//设置WS2812B的颜色
     led_strip_refresh(led_strip); // 刷新灯带使颜色生效
 }

@@ -17,5 +17,6 @@
     "--compile-commands-dir=f:\\StudentGame\\2025National College Mechanical Innovation Competition\\Software\\2025NUMIC_Code\\Buttterfly\\build"
   ],
   "idf.flashType": "JTAG",
-  "idf.currentSetup": "f:\\esp\\v5.5\\esp-idf"
+  "idf.currentSetup": "f:\\esp\\v5.5\\esp-idf",
+  "idf.port": "/dev/ttyACM0"
 }
