@@ -1,0 +1,9 @@
+idf_component_register(
+    SRCS
+        "Device_AprilTag.c"
+    INCLUDE_DIRS
+        "."
+    REQUIRES
+        driver
+        freertos
+)
