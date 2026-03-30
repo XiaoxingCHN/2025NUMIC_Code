@@ -1,0 +1,9 @@
+idf_component_register(
+    SRCS
+        "BSP_Camera.c"
+    INCLUDE_DIRS
+        "."
+    REQUIRES
+        esp32-camera
+        driver
+)
